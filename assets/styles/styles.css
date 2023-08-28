@@ -1,0 +1,46 @@
+/* ==== base styles ==== */
+:root {
+  --eerie-black: hsl(266, 11%, 12%);
+  --bright-gray: hsl(0, 0%, 93%);
+  --charleston-green: hsl(267, 10%, 17%);
+  --raisin-black: hsl(263, 11%, 14%);
+
+  font-size: 62.5%;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  gap: 3.2rem;
+
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
+    sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+
+  background-color: var(--eerie-black);
+}
+
+button {
+  padding: 0.5rem 1.2rem;
+  font: inherit;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  border: none;
+}
