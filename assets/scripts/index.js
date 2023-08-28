@@ -64,3 +64,80 @@ const Game = (() => {
     resetCurrentPlayer,
   };
 })();
+
+const DOM = (() => {
+  const boardDiv = document.querySelector('#board');
+  const messageSpan = document.querySelector('#message');
+  const restartButton = document.querySelector('#restart-button');
+
+  messageSpan.textContent = `Turn of ${Game.getCurrentPlayer().name} ${
+    Game.getCurrentPlayer().mark
+  }`;
+
+  const renderBoard = () => {
+    boardDiv.textContent = '';
+    Board.getBoard().forEach((square, index) => {
+      boardDiv.insertAdjacentHTML(
+        'beforeend',
+        `<div class="square" data-id="${index}">${square}</div>`
+      );
+    });
+  };
+
+  const handleBoardClick = event => {
+    const clickedSquare = event.target;
+    const clickedSquareId = clickedSquare.dataset.id;
+
+    if (clickedSquare === boardDiv) {
+      return;
+    }
+
+    if (clickedSquare.textContent !== '') {
+      return;
+    }
+
+    if (Game.checkWinner(Board.getBoard()) || Game.checkTie()) {
+      return;
+    }
+
+    clickedSquare.textContent = Game.getCurrentPlayer().mark;
+
+    Board.markSquare(clickedSquareId);
+
+    messageSpan.textContent = `Turn of ${Game.getCurrentPlayer().name} ${
+      Game.getCurrentPlayer().mark
+    }`;
+
+    if (Game.checkWinner(Board.getBoard())) {
+      Game.switchPlayer();
+      messageSpan.textContent = `${Game.getCurrentPlayer().mark} ${
+        Game.getCurrentPlayer().name
+      } wins! 🎉`;
+    }
+
+    if (Game.checkTie()) {
+      messageSpan.textContent = '👻🤝👽 We have a tie!';
+    }
+  };
+
+  const handleRestartGame = () => {
+    Game.restart();
+    Game.resetCurrentPlayer();
+
+    messageSpan.textContent = `Turn of ${Game.getCurrentPlayer().name} ${
+      Game.getCurrentPlayer().mark
+    }`;
+
+    renderBoard();
+  };
+
+  const startGame = () => {
+    renderBoard();
+    boardDiv.addEventListener('click', handleBoardClick);
+    restartButton.addEventListener('click', handleRestartGame);
+  };
+
+  return { startGame };
+})();
+
+DOM.startGame();
