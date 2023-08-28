@@ -1,4 +1,4 @@
-### Library
+### Emoji Toe
 
 This is a solution to The Odin Project's [Tic Tac Toe](https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe). It aims to practice Factory Function and Module Pattern by creating a simple game.
 
