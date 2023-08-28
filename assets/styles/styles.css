@@ -44,3 +44,41 @@ button {
   border-radius: 0.4rem;
   border: none;
 }
+
+/* ==== general styles ==== */
+.message {
+  color: var(--bright-gray);
+  font-size: 1.8rem;
+}
+
+.board {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 1rem;
+
+  width: 36rem;
+  height: 36rem;
+
+  background-color: var(--charleston-green);
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.square {
+  display: grid;
+  place-items: center;
+  font-size: 3.2rem;
+  font-weight: 600;
+
+  background-color: var(--raisin-black);
+  border-radius: inherit;
+}
+
+.button {
+  width: max-content;
+  background-color: var(--bright-gray);
+  color: var(--eerie-black);
+  font-weight: 600;
+}
